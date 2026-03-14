@@ -1,0 +1,47 @@
+# Simple interactive calculator in Engine
+# Supported ops: +  -  *  /  %
+# Type 'exit' as the operation to quit.
+
+func calc(a, op, b) {
+    if op == "+" {
+        return a + b
+    } else if op == "-" {
+        return a - b
+    } else if op == "*" {
+        return a * b
+    } else if op == "/" {
+        return a / b
+    } else if op == "%" {
+        return a % b
+    } else {
+        show "Unknown operator: " + op
+        return null
+    }
+}
+
+show "Engine Calculator"
+show "Enter numbers and an operator. Example: 10 + 5"
+show "Type 'exit' to quit."
+
+while true {
+    var a_text = input("a: ")
+    var op = input("op (+ - * / % or exit): ")
+
+    if op == "exit" {
+        show "bye"
+        return
+    }
+
+    var b_text = input("b: ")
+
+    # Using float() allows both integers and decimals
+    var a = float(a_text)
+    var b = float(b_text)
+
+    var result = calc(a, op, b)
+    if result != null {
+        show "= " + str(result)
+    }
+
+    show ""
+}
